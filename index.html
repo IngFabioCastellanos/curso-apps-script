@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link
+      href="https://unpkg.com/gridjs/dist/theme/mermaid.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="wrapper"></div>
+
+    <script src="https://unpkg.com/gridjs/dist/gridjs.umd.js"></script>
+    <script>
+       google
+        .script
+        .run
+        .withSuccessHandler(respuesta => {
+          const respuestaParseada = JSON.parse(respuesta);
+
+              const headers = respuestaParseada.shift();
+              const datos = respuestaParseada;
+
+                console.log(headers)
+                console.log(datos)
+
+              new gridjs.Grid({
+                columns: headers,
+                search: true,
+                data: datos
+              }).render(document.getElementById("wrapper"));
+
+        }).obtenerValores();
+      
+    </script>
+  </body>
+</html>
